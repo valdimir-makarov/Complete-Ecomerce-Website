@@ -1,7 +1,8 @@
 
-import { Fragment } from 'react'
+import { Children, Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Bars3Icon,ShoppingCartIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
 
 const user = {
   name: 'Tom Cook',
@@ -28,7 +29,7 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
   }
 
- export const Navbar=()=>{
+ export const Navbar=({children})=>{
 
 
     return(<>
@@ -70,14 +71,16 @@ function classNames(...classes) {
                   </div>
                   <div className="hidden md:block">
                     <div className="ml-4 flex items-center md:ml-6">
-                      <button
+
+                      <Link to={'/cart'}>  <button
                         type="button"
                         className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <span className="absolute -inset-1.5" />
                         <span className="sr-only">View notifications</span>
-                        <BellIcon className="h-6 w-6" aria-hidden="true" />
-                      </button>
+                        <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
+                      </button></Link>
+                    
 
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
@@ -165,7 +168,7 @@ function classNames(...classes) {
                     >
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">View notifications</span>
-                      <BellIcon className="h-6 w-6" aria-hidden="true" />
+                      <ShoppingCartIcon className="h-6 w-6" aria-hidden="true" />
                     </button>
                   </div>
                   <div className="mt-3 space-y-1 px-2">
@@ -192,7 +195,7 @@ function classNames(...classes) {
           </div>
         </header>
         <main>
-          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">{/* Your content */}</div>
+          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">{children}</div>
         </main>
       </div>
     
